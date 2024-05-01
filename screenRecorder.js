@@ -2,12 +2,14 @@ let mediaRecorder;
 let recordedBlobs;
 
 const startRecording = () => {
+  // you can also record your shared screen using this function. just replace "stream" with "mediaStream" in next line inside the "if" condition
   if (!stream) {
     alert("No current feed");
     return;
   }
   console.log("start recording");
   recordedBlobs = []; // an array to hold the blobs for playback
+  // you can also record your shared screen using this function. just replace "stream" with "mediaStream" inside "MediaRecorder" in the next line
   mediaRecorder = new MediaRecorder(stream); // make a media recorder form the constructor
   mediaRecorder.ondataavailable = (e) => {
     // ondataavailable will run when the stream ends, or stopped,  or we specifically asked for it

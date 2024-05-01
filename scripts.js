@@ -1,5 +1,6 @@
 const videoEl = document.querySelector("#my-video");
 let stream = null; //creating a stream var so that we can use it later
+let mediaStream = null; //creating a mediaStream var for shareScreen
 
 const constraints = {
   audio: true, // use your headphones, or be prepared for feedback
@@ -35,6 +36,8 @@ const showMyFeed = (e) => {
     return;
   }
   videoEl.srcObject = stream; // this will set our MediaStream (stream) to <video />
+  const tracks = stream.getTracks();
+  console.log(tracks);
   changeButtons([
     "green",
     "green",
@@ -100,3 +103,15 @@ document
 document
   .getElementById("share-screen")
   .addEventListener("click", (e) => shareScreen(e));
+
+document
+  .getElementById("audio-input")
+  .addEventListener("change", (e) => chnageAudioInput(e));
+
+document
+  .getElementById("audio-output")
+  .addEventListener("change", (e) => chnageAudioOutput(e));
+
+document
+  .getElementById("video-input")
+  .addEventListener("change", (e) => chnageVideo(e));
